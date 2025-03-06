@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            background-color: #f4f4f4;
+        }
+        .sidebar {
+            width: 250px;
+            background: #007bff;
+            color: white;
+            height: 100vh;
+            padding-top: 20px;
+            position: fixed;
+        }
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            padding: 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .sidebar ul li:hover {
+            background: #0056b3;
+        }
+        .main-content {
+            margin-left: 250px;
+            flex-grow: 1;
+            padding: 20px;
+        }
+        .header {
+            background: white;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .card i {
+            font-size: 40px;
+            margin-bottom: 10px;
+            color: #007bff;
+        }
+        .footer {
+            margin-top: 20px;
+            background: #007bff;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Admin INRD</h2>
+        <ul>
+            <li><i class="fa fa-home"></i> Trang chủ</li>
+            <li><i class="fa fa-list"></i> Danh mục</li>
+            <li><i class="fa fa-box"></i> Sản phẩm</li>
+            <li><i class="fa fa-images"></i> Slider</li>
+            <li><i class="fa fa-shopping-cart"></i> Đơn hàng</li>
+            <li><i class="fa fa-user"></i> Nhân viên</li>
+            <li><i class="fa fa-truck"></i> Đối tác vận chuyển</li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>Trang Chủ</h1>
+            <a href="trangchu.html"><button style="padding: 10px; background: #007bff; color: white; border: none; cursor: pointer;">Đăng xuất</button></a>
+        </div>
+        <div class="dashboard">
+            <div class="card">
+                <i class="fa fa-shopping-cart"></i>
+                <h3>24 Đơn hàng</h3>
+                <p>Đơn hàng đã xác nhận</p>
+            </div>
+            <div class="card">
+                <i class="fa fa-comments"></i>
+                <h3>2 Bình luận</h3>
+                <p>Số lượng sản phẩm đã bán</p>
+            </div>
+            <div class="card">
+                <i class="fa fa-tag"></i>
+                <h3>2 Khách hàng</h3>
+                <p>Sản phẩm đang giảm giá</p>
+            </div>
+            <div class="card">
+                <i class="fa fa-user"></i>
+                <h3>0 Nhân viên</h3>
+                <p>Sản phẩm được bình luận</p>
+            </div>
+        </div>
+        <div class="footer">
+            <p>&copy; 2025 LPTSHOP. All rights reserved.</p>
+        </div>
+    </div>
+    
+</body>
+</html>

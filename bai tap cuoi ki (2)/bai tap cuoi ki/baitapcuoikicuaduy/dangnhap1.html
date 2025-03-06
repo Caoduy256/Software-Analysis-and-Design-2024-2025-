@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập - Fashion-D</title>
+    <style>
+        /* CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .auth-container {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .form-box h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form-box input[type="email"],
+        .form-box input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .form-box button {
+            width: 100%;
+            background: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .form-box button:hover {
+            background: #45a049;
+        }
+
+        .form-box p {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .form-box p a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="form-box">
+            <h2>Đăng Nhập</h2>
+            <input type="email" placeholder="Email" id="login-email" required>
+            <input type="password" placeholder="Mật khẩu" id="login-password" required>
+            <button onclick="login()">Đăng Nhập</button>
+            <p>Chưa có tài khoản? <a href="dangki1.html">Đăng ký ngay</a></p>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript
+        function login() {
+            var email = document.getElementById("login-email").value;
+            var password = document.getElementById("login-password").value;
+
+            // Kiểm tra thông tin đăng nhập (giả lập)
+            if (email === "admin@example.com" && password === "123456") {
+                alert("Đăng nhập thành công!");
+                window.location.href = "index.html"; // Chuyển hướng về trang chính
+            } else {
+                alert("Sai thông tin đăng nhập!");
+            }
+        }
+    </script>
+</body>
+</html>

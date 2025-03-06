@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giảm Giá 70%</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background: #ff5722;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .discount-banner {
+            background: #fff;
+            border: 2px solid #ff5722;
+            border-radius: 5px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .product {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .product img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: red;
+        }
+
+        .new-price {
+            font-size: 1.5em;
+            color: #ff5722;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background: #333;
+            color: #fff;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Giảm Giá 70% Cho Tất Cả Sản Phẩm!</h1>
+    </header>
+
+    <main>
+        <div class="discount-banner">
+            <h2>Đừng Bỏ Lỡ Cơ Hội Này!</h2>
+            <p>Chỉ trong thời gian có hạn, hãy nhanh tay để sở hữu những sản phẩm yêu thích với mức giá cực kỳ hấp dẫn!</p>
+        </div>
+
+        <section id="products">
+            <h2>Sản Phẩm Giảm Giá</h2>
+            <div class="product">
+                <img src="shirt.jpg" alt="Áo Sơ Mi">
+                <h3>Áo Sơ Mi</h3>
+                <p class="old-price">Giá: 300.000 VNĐ</p>
+                <p class="new-price">Giá Khuyến Mãi: 90.000 VNĐ</p>
+                <button onclick="addToCart('Áo Sơ Mi')">Thêm vào Giỏ Hàng</button>
+            </div>
+            <div class="product">
+                <img src="pants.jpg" alt="Quần Jean">
+                <h3>Quần Jean</h3>
+                <p class="old-price">Giá: 500.000 VNĐ</p>
+                <p class="new-price">Giá Khuyến Mãi: 150.000 VNĐ</p>
+                <button onclick="addToCart('Quần Jean')">Thêm vào Giỏ Hàng</button>
+            </div>
+            <div class="product">
+                <img src="dress.jpg" alt="Váy">
+                <h3>Váy</h3>
+                <p class="old-price">Giá: 400.000 VNĐ</p>
+                <p class="new-price">Giá Khuyến Mãi: 120.000 VNĐ</p>
+                <button onclick="addToCart('Váy')">Thêm vào Giỏ Hàng</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Thời Trang Giảm Giá. Tất cả quyền được bảo lưu.</p>
+    </footer>
+
+    <script>
+        function addToCart(productName) {
+            alert(productName + " đã được thêm vào giỏ hàng!");
+        }
+    </script>
+</body>
+</html>

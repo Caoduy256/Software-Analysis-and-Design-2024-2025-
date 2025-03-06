@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch Sử Đơn Hàng</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            border-bottom: 2px solid #ff6600;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn {
+            padding: 8px 12px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+
+        .btn-view {
+            background: #17a2b8;
+            color: white;
+        }
+
+        .btn-view:hover {
+            background: #138496;
+        }
+
+        .btn-reorder {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-reorder:hover {
+            background: #218838;
+        }
+
+        .btn-delete {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-delete:hover {
+            background: #c82333;
+        }
+
+        .quantity-input {
+            width: 60px;
+            padding: 5px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 5px;
+            justify-content: center;
+        }
+
+        .order-details {
+            display: none;
+            margin-top: 20px;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+
+        .order-details h3 {
+            margin-bottom: 10px;
+        }
+
+        .order-details p {
+            margin: 5px 0;
+        }
+
+        .order-details table {
+            margin-top: 10px;
+        }
+
+        .order-details th, .order-details td {
+            padding: 8px;
+        }
+
+        .order-details th {
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Lịch Sử Đơn Hàng</h2>
+        <input type="text" id="search" class="search-box" placeholder="Nhập mã đơn hàng..." onkeyup="searchOrder()">
+        <table>
+            <thead>
+                <tr>
+                    <th>Mã Đơn</th>
+                    <th>Ngày Đặt</th>
+                    <th>Trạng Thái</th>
+                    <th>Tổng Tiền</th>
+                    <th>Số Lượng</th>
+                    <th>Hành Động</th>
+                </tr>
+            </thead>
+            <tbody id="orderTable">
+                <tr>
+                    <td>DH001</td>
+                    <td>2025-03-01</td>
+                    <td>Đã giao</td>
+                    <td>1,200,000đ</td>
+                    <td><input type="number" class="quantity-input" value="1" min="1"></td>
+                    <td class="action-buttons">
+                        <button class="btn btn-view" onclick="viewOrder('DH001')">Xem</button>
+                        <button class="btn btn-reorder" onclick="reorder('DH001', this)">Mua lại</button>
+                        <button class="btn btn-delete" onclick="deleteOrder(this, 'DH001')">Xóa</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>DH002</td>
+                    <td>2025-03-02</td>
+                    <td>Đang giao</td>
+                    <td>750,000đ</td>
+                    <td><input type="number" class="quantity-input" value="1" min="1"></td>
+                    <td class="action-buttons">
+                        <button class="btn btn-view" onclick="viewOrder('DH002')">Xem</button>
+                        <button class="btn btn-reorder" onclick="reorder('DH002', this)">Mua lại</button>
+                        <button class="btn btn-delete" onclick="deleteOrder(this, 'DH002')">Xóa</button>
+                    </td>
+                </tr>
+                <!-- Additional orders -->
+                <tr>
+                    <td>DH003</td>
+                    <td>2025-03-03</td>
+                    <td>Đã hủy</td>
+                    <td>500,000đ</td>
+                    <td><input type="number" class="quantity-input" value="1" min="1"></td>
+                    <td class="action-buttons">
+                        <button class="btn btn-view" onclick="viewOrder('DH003')">Xem</button>
+                        <button class="btn btn-reorder" onclick="reorder('DH003', this)">Mua lại</button>
+                        <button class="btn btn-delete" onclick="deleteOrder(this, 'DH003')">Xóa</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>DH004</td>
+                    <td>2025-03-04</td>
+                    <td>Đang xử lý</td>
+                    <td>1,000,000đ</td>
+                    <td><input type="number" class="quantity-input" value="1" min="1"></td>
+                    <td class="action-buttons">
+                        <button class="btn btn-view" onclick="viewOrder('DH004')">Xem</button>
+                        <button class="btn btn-reorder" onclick="reorder('DH004', this)">Mua lại</button>
+                        <button class="btn btn-delete" onclick="deleteOrder(this, 'DH004')">Xóa</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="orderDetails" class="order-details">
+            <h3>Chi Tiết Đơn Hàng</h3>
+            <p><strong>Mã Đơn:</strong> <span id="orderId"></span></p>
+            <p><strong>Ngày Đặt:</strong> <span id="orderDate"></span></p>
+            <p><strong>Trạng Thái:</strong> <span id="orderStatus"></span></p>
+            <p><strong>Tổng Tiền:</strong> <span id="orderTotal"></span></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sản Phẩm</th>
+                        <th>Số Lượng</th>
+                        <th>Giá</th>
+                    </tr>
+                </thead>
+                <tbody id="orderItems">
+                    <!-- Order items will be dynamically added here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <script>
+        function searchOrder() {
+            let input = document.getElementById("search").value.toUpperCase();
+            let table = document.getElementById("orderTable");
+            let rows = table.getElementsByTagName("tr");
+            
+            for (let i = 0; i < rows.length; i++) {
+                let td = rows[i].getElementsByTagName("td")[0];
+                if (td) {
+                    let textValue = td.textContent || td.innerText;
+                    rows[i].style.display = textValue.toUpperCase().includes(input) ? "" : "none";
+                }
+            }
+        }
+
+        function viewOrder(orderId) {
+            // Fake order details for demonstration
+            const orderDetails = {
+                DH001: {
+                    date: '2025-03-01',
+                    status: 'Đã giao',
+                    total: '1,200,000đ',
+                    items: [
+                        { name: 'Sản phẩm A', quantity: 1, price: '600,000đ' },
+                        { name: 'Sản phẩm B', quantity: 2, price: '300,000đ' }
+                    ]
+                },
+                DH002: {
+                    date: '2025-03-02',
+                    status: 'Đang giao',
+                    total: '750,000đ',
+                    items: [
+                        { name: 'Sản phẩm C', quantity: 1, price: '750,000đ' }
+                    ]
+                },
+                DH003: {
+                    date: '2025-03-03',
+                    status: 'Đã hủy',
+                    total: '500,000đ',
+                    items: [
+                        { name: 'Sản phẩm D', quantity: 1, price: '500,000đ' }
+                    ]
+                },
+                DH004: {
+                    date: '2025-03-04',
+                    status: 'Đang xử lý',
+                    total: '1,000,000đ',
+                    items: [
+                        { name: 'Sản phẩm E', quantity: 2, price: '500,000đ' }
+                    ]
+                }
+            };
+
+            const details = orderDetails[orderId];
+            document.getElementById('orderId').innerText = orderId;
+            document.getElementById('orderDate').innerText = details.date;
+            document.getElementById('orderStatus').innerText = details.status;
+            document.getElementById('orderTotal').innerText = details.total;
+
+            const orderItems = document.getElementById('orderItems');
+            orderItems.innerHTML = '';
+            details.items.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td>${item.name}</td><td>${item.quantity}</td><td>${item.price}</td>`;
+                orderItems.appendChild(row);
+            });
+
+            document.getElementById('orderDetails').style.display = 'block';
+        }
+
+        function reorder(orderId, button) {
+            let row = button.parentElement.parentElement;
+            let quantity = row.querySelector(".quantity-input").value;
+            alert("Mua lại đơn hàng: " + orderId + " với số lượng: " + quantity);
+        }
+
+        function deleteOrder(button, orderId) {
+            if (confirm("Bạn có chắc chắn muốn xóa đơn hàng " + orderId + "?") ) {
+                let row = button.parentElement.parentElement;
+                row.remove();
+                alert("Đã xóa đơn hàng: " + orderId);
+            }
+        }
+    </script>
+</body>
+</html>

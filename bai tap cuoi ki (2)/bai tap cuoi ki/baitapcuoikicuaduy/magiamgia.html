@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mã Giảm Giá</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        h1 {
+            color: #ff6600;
+        }
+        .search-box {
+            margin-bottom: 20px;
+        }
+        input {
+            padding: 8px;
+            width: 70%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .coupon {
+            background: #fff;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .coupon:hover {
+            background: #fffae6;
+        }
+        button {
+            background: #ff6600;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #e65c00;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Danh Sách Mã Giảm Giá</h1>
+        <div class="search-box">
+            <input type="text" id="search" placeholder="Tìm mã giảm giá..." onkeyup="filterCoupons()">
+        </div>
+        <div id="coupon-list">
+            <div class="coupon" data-code="SALE50"><span>Giảm 50%</span> <button onclick="copyCode('SALE50')">Sao chép</button></div>
+            <div class="coupon" data-code="FREESHIP"><span>Miễn phí vận chuyển</span> <button onclick="copyCode('FREESHIP')">Sao chép</button></div>
+            <div class="coupon" data-code="DISCOUNT30"><span>Giảm 30K</span> <button onclick="copyCode('DISCOUNT30')">Sao chép</button></div>
+        </div>
+    </div>
+    <script>
+        function copyCode(code) {
+            navigator.clipboard.writeText(code).then(() => {
+                alert("Đã sao chép mã: " + code);
+            });
+        }
+        function filterCoupons() {
+            let input = document.getElementById("search").value.toLowerCase();
+            let coupons = document.querySelectorAll(".coupon");
+            coupons.forEach(coupon => {
+                let text = coupon.innerText.toLowerCase();
+                coupon.style.display = text.includes(input) ? "flex" : "none";
+            });
+        }
+    </script>
+</body>
+</html>

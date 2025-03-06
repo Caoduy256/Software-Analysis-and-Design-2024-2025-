@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ Hàng Của Tôi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        header {
+            background: linear-gradient(90deg, #ff7e5f, #feb47b);
+            color: #fff;
+            padding: 15px 0;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background: #fff;
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            margin: 0 20px;
+            text-decoration: none;
+            color: #555;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff7e5f;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .coupon-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        #coupon-code {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            background: #ff7e5f;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #e66b50;
+        }
+
+        .buy-btn {
+            background: #28a745;
+        }
+
+        .buy-btn:hover {
+            background: #218838;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            transition: background 0.3s;
+        }
+
+        .cart-item:hover {
+            background: #f9f9f9;
+        }
+
+        .cart-item img {
+            width: 100px;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+
+        .cart-item img:hover {
+            transform: scale(1.1);
+        }
+
+        .cart-item-details {
+            flex: 1;
+            margin-left: 20px;
+        }
+
+        .cart-item-details h4 {
+            margin: 0;
+        }
+
+        .cart-item-details p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+        }
+
+        .cart-item-quantity input {
+            width: 50px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 0 10px;
+        }
+
+        .cart-item-quantity button {
+            padding: 5px 10px;
+            border: none;
+            background: #ff6600;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .cart-item-quantity button:hover {
+            background: #e65c00;
+        }
+
+        .cart-total {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        .cart-total p {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+
+        .checkout-btn {
+            padding: 10px 20px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .checkout-btn:hover {
+            background: #218838;
+        }
+
+        .review-item {
+            border-bottom: 1px solid #eee;
+            padding: 10px 0;
+        }
+
+        .review-item h4 {
+            margin: 0;
+        }
+
+        .review-item p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .review-item .rating {
+            color: #ff9900;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px 0;
+            background: #333;
+            color: #fff;
+            font-size: 14px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Giỏ Hàng Của Tôi
+    </header>
+
+    <nav>
+        <a href="#" onclick="showSection('orders')">Đơn Hàng</a>
+        <a href="#" onclick="showSection('reviews')">Đánh Giá</a>
+        <a href="#" onclick="showSection('cart')">Giỏ Hàng</a>
+        <a href="#" onclick="showSection('coupons')">Phiếu Giảm Giá</a>
+    </nav>
+
+    <main>
+        <section id="orders" class="section hidden">
+            <h2>Đơn Hàng Của Tôi</h2>
+            <div class="cart-item">
+                <img src="images/product1.jpg" alt="Product 1">
+                <div class="cart-item-details">
+                    <h4>Sản phẩm 1</h4>
+                    <p>Giá: 500,000 VNĐ</p>
+                </div>
+                <div class="cart-item-quantity">
+                    <button onclick="changeQuantity(this, -1)">-</button>
+                    <input type="text" value="1" readonly>
+                    <button onclick="changeQuantity(this, 1)">+</button>
+                </div>
+                <p>Tổng: 500,000 VNĐ</p>
+            </div>
+            <div class="cart-item">
+                <img src="images/product2.jpg" alt="Product 2">
+                <div class="cart-item-details">
+                    <h4>Sản phẩm 2</h4>
+                    <p>Giá: 300,000 VNĐ</p>
+                </div>
+                <div class="cart-item-quantity">
+                    <button onclick="changeQuantity(this, -1)">-</button>
+                    <input type="text" value="1" readonly>
+                    <button onclick="changeQuantity(this, 1)">+</button>
+                </div>
+                <p>Tổng: 300,000 VNĐ</p>
+            </div>
+            <div class="cart-item">
+                <img src="images/product3.jpg" alt="Product 3">
+                <div class="cart-item-details">
+                    <h4>Sản phẩm 3</h4>
+                    <p>Giá: 700,000 VNĐ</p>
+                </div>
+                <div class="cart-item-quantity">
+                    <button onclick="changeQuantity(this, -1)">-</button>
+                    <input type="text" value="1" readonly>
+                    <button onclick="changeQuantity(this, 1)">+</button>
+                </div>
+                <p>Tổng: 700,000 VNĐ</p>
+            </div>
+            <div class="cart-total">
+                <p><strong>Tổng cộng:</strong> 1,500,000 VNĐ</p>
+                <a href="muahang.html"><button class="checkout-btn">Thanh Toán</button></a>
+            </div>
+        </section>
+
+        <section id="reviews" class="section hidden">
+            <h2>Đánh Giá</h2>
+            <div class="review-item">
+                <h4>Sản phẩm 1</h4>
+                <div class="rating">
+                    <span>★★★★☆</span>
+                </div>
+                <p>Rất tốt, chất lượng tuyệt vời!</p>
+            </div>
+            <div class="review-item">
+                <h4>Sản phẩm 2</h4>
+                <div class="rating">
+                    <span>★★★☆☆</span>
+                </div>
+                <p>Chất lượng ổn, nhưng giao hàng chậm.</p>
+            </div>
+        </section>
+
+        <section id="cart" class="section hidden">
+            <h2>Giỏ Hàng</h2>
+            <div class="cart-item">
+                <img src="images/product1.jpg" alt="Product 1">
+                <div class="cart-item-details">
+                    <h4>Sản phẩm 1</h4>
+                    <p>Giá: 500,000 VNĐ</p>
+                </div>
+                <div class="cart-item-quantity">
+                    <button onclick="changeQuantity(this, -1)">-</button>
+                    <input type="text" value="1" readonly>
+                    <button onclick="changeQuantity(this, 1)">+</button>
+                </div>
+                <p>Tổng: 500,000 VNĐ</p>
+            </div>
+            <div class="cart-item">
+                <img src="images/product2.jpg" alt="Product 2">
+                <div class="cart-item-details">
+                    <h4>Sản phẩm 2</h4>
+                    <p>Giá: 300,000 VNĐ</p>
+                </div>
+                <div class="cart-item-quantity">
+                    <button onclick="changeQuantity(this, -1)">-</button>
+                    <input type="text" value="1" readonly>
+                    <button onclick="changeQuantity(this, 1)">+</button>
+                </div>
+                <p>Tổng: 300,000 VNĐ</p>
+            </div>
+            <div class="cart-total">
+                <p><strong>Tổng cộng:</strong> 800,000 VNĐ</p>
+                <a href="muahang.html"><button class="checkout-btn">Thanh Toán</button></a>
+            </div>
+        </section>
+
+        <section id="coupons" class="section hidden">
+            <h2>Phiếu Giảm Giá</h2>
+            <div class="coupon-container">
+                <input type="text" id="coupon-code" placeholder="Nhập mã phiếu giảm giá">
+                <button onclick="applyCoupon()">Áp Dụng</button>
+            </div>
+            <p id="coupon-message"></p>
+            <h3>Mã Giảm Giá Đã Lưu</h3>
+            <ul>
+                <li>SALE50 - Giảm 50%</li>
+                <li>FREESHIP - Miễn phí vận chuyển</li>
+                <li>DISCOUNT30 - Giảm 30K</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2025 Thời Trang. Tất cả quyền được bảo lưu.
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const sections = document.querySelectorAll("main .section");
+            sections.forEach(section => section.classList.add("hidden"));
+        });
+
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll("main .section");
+            sections.forEach(section => {
+                section.classList.toggle("hidden", section.id !== sectionId);
+            });
+        }
+
+        function changeQuantity(button, change) {
+            let quantityInput = button.parentElement.querySelector('input');
+            let quantity = parseInt(quantityInput.value);
+            quantity += change;
+            if (quantity < 1) quantity = 1;
+            quantityInput.value = quantity;
+            updateTotal();
+        }
+
+        function updateTotal() {
+            let cartItems = document.querySelectorAll('.cart-item');
+            let total = 0;
+            cartItems.forEach(item => {
+                let price = parseInt(item.querySelector('.cart-item-details p').innerText.replace('Giá: ', '').replace(' VNĐ', ''));
+                let quantity = parseInt(item.querySelector('input').value);
+                total += price * quantity;
+                item.querySelector('p:last-child').innerText = `Tổng: ${price * quantity} VNĐ`;
+            });
+            document.querySelector('.cart-total p strong').innerText = `Tổng cộng: ${total} VNĐ`;
+        }
+
+        function applyCoupon() {
+            const couponCode = document.getElementById('coupon-code').value;
+            const message = document.getElementById('coupon-message');
+            if (couponCode === 'SALE50') {
+                message.innerText = 'Áp dụng thành công mã giảm giá 50%';
+                message.style.color = 'green';
+            } else {
+                message.innerText = 'Mã giảm giá không hợp lệ';
+                message.style.color = 'red';
+            }
+        }
+    </script>
+</body>
+</html>

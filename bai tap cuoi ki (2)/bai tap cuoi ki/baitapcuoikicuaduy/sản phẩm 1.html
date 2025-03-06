@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiết Sản Phẩm - Thời Trang Phá Cách</title>
+    <link rel="stylesheet" href="product-detail.css">
+    <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    padding: 10px 20px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.search-bar {
+    float: right;
+}
+
+.product-detail {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+}
+
+.product-gallery {
+    flex: 1;
+}
+
+.main-image img {
+    width: 100%;
+    border: 1px solid #eee;
+}
+
+.thumbnail-gallery {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.thumbnail-gallery img {
+    width: 60px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+}
+
+.product-info {
+    flex: 1;
+}
+
+.product-info h1 {
+    margin-top: 0;
+}
+
+.rating ion-icon {
+    color: #ff9900;
+}
+
+.price {
+    color: #d32f2f;
+    font-size: 1.5em;
+}
+
+.discount {
+    background-color: #d32f2f;
+    color: white;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-size: 0.8em;
+}
+
+.size-selection .size-btn {
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+}
+
+.quantity button {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.quantity input {
+    width: 30px;
+    text-align: center;
+    border: none;
+}
+
+.action-buttons button {
+    padding: 10px 15px;
+    margin: 5px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    background-color: #000;
+    border-radius: 3px;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Nữ</a></li>
+                <li><a href="#">Nam</a></li>
+                <li><a href="#">Bộ sưu tập</a></li>
+                <li><a href="#">Về chúng tôi</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Tìm kiếm sản phẩm...">
+                <ion-icon name="search-outline"></ion-icon>
+            </div>
+        </nav>
+    </header>
+    
+    <main class="product-detail">
+        <div class="product-gallery">
+            <div class="main-image">
+                <img src="images/main.jpg" id="mainImage" alt="Sản phẩm">
+            </div>
+            <div class="thumbnail-gallery">
+                <img src="images/img1.jpg" onclick="changeImage(this.src)">
+                <img src="images/img2.jpg" onclick="changeImage(this.src)">
+                <img src="images/img3.jpg" onclick="changeImage(this.src)">
+                <img src="images/img4.jpg" onclick="changeImage(this.src)">
+            </div>
+        </div>
+        <div class="product-info">
+            <h1>Áo Sơ Mi Tencel Kose</h1>
+            <div class="rating">
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star-outline"></ion-icon>
+                <span>(0 đánh giá)</span>
+            </div>
+            <p class="price">745.000đ <del>1.490.000đ</del> <span class="discount">-50%</span></p>
+            <div class="color-selection">
+                <h4>Màu sắc: Be</h4>
+                <div class="color-options">
+                    <span class="color-be" onclick="selectColor(this)"></span>
+                </div>
+            </div>
+            <div class="size-selection">
+                <h4>Kích thước:</h4>
+                <button class="size-btn">S</button>
+                <button class="size-btn">M</button>
+                <button class="size-btn">L</button>
+                <button class="size-btn">XL</button>
+                <button class="size-btn">XXL</button>
+            </div>
+            <div class="quantity">
+                <h4>Số lượng:</h4>
+                <button onclick="changeQuantity(-1)">-</button>
+                <input type="text" id="quantityInput" value="1" readonly>
+                <button onclick="changeQuantity(1)">+</button>
+            </div>
+            <div class="action-buttons">
+                <button class="add-to-cart"><a href="cuahangcuatoi.html">thêm vào giỏ</a></button>
+                <button class="buy-now">Mua hàng</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Đổi ảnh chính khi click vào ảnh thumbnail
+function changeImage(src) {
+    document.getElementById("mainImage").src = src;
+}
+
+// Thay đổi màu sắc khi chọn
+function selectColor(element) {
+    const colorOptions = document.querySelectorAll('.color-options span');
+    colorOptions.forEach(option => option.classList.remove('selected'));
+    element.classList.add('selected');
+}
+
+// Tăng giảm số lượng sản phẩm
+function changeQuantity(change) {
+    let quantity = parseInt(document.getElementById("quantityInput").value);
+    quantity += change;
+    if (quantity < 1) quantity = 1;
+    document.getElementById("quantityInput").value = quantity;
+}
+
+    </script>
+</body>
+</html>

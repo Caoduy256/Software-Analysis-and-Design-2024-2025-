@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh Toán</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ff6600;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 20px auto;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: 30%;
+            padding: 20px;
+            background: #f9f9f9;
+            border-right: 1px solid #eee;
+        }
+
+        .sidebar h3 {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .sidebar h3 ion-icon {
+            margin-right: 10px;
+        }
+
+        .sidebar input, 
+        .sidebar select, 
+        .sidebar button {
+            width: 100%;
+            margin: 5px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .search-btn {
+            background: #ff6600;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .search-btn:hover {
+            background: #e65c00;
+        }
+
+        .main-content {
+            width: 70%;
+            padding: 20px;
+        }
+
+        h2 {
+            border-bottom: 2px solid #ff6600;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        form label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        form input, 
+        form select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .total {
+            background: #f9f9f9;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            border: 1px solid #eee;
+        }
+
+        .grand-total {
+            color: red;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .confirm-btn {
+            width: 100%;
+            padding: 15px;
+            background: #28a745;
+            color: white;
+            border: none;
+            margin-top: 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .confirm-btn:hover {
+            background: #218838;
+        }
+
+        .home-icon {
+            font-size: 24px;
+            cursor: pointer;
+            display: inline-block;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="trangchu2.html">Trang Chủ</a></li>
+                <li><a href="cuahangcuatoi.html">Giỏ Hàng</a></li>
+                <li><a href="lichsudonhang.html">Lịch Sử Đơn Hàng</a></li>
+                <li><a href="magiamgia.html">Mã Giảm Giá</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="sidebar">
+            <h3><a href="trangchu2.html" class="home-icon">
+                <ion-icon name="home-outline"></ion-icon>
+            </a>TÌM KIẾM</h3>
+            <label>Danh mục:</label>
+            <select>
+                <option>Thời Trang Nam</option>
+                <option>Thời Trang Nữ</option>
+            </select>
+
+            <label>Giá từ:</label>
+            <input type="number" placeholder="0 VNĐ">
+            <input type="number" placeholder="100,000 VNĐ">
+            <button class="search-btn">🔍 Tìm kiếm</button>
+        </div>
+
+        <div class="main-content">
+            <h2>Thông tin thanh toán</h2>
+            <form id="checkout-form">
+                <label>Họ và tên:</label>
+                <input type="text" id="name" required>
+
+                <label>Số điện thoại:</label>
+                <input type="tel" id="phone" required>
+
+                <label>Tỉnh/Thành phố:</label>
+                <select id="city">
+                    <option>--Chọn Tỉnh, Thành phố--</option>
+                </select>
+
+                <label>Quận/Huyện:</label>
+                <select id="district">
+                    <option>--Chọn Quận, Huyện--</option>
+                </select>
+
+                <label>Phường/Xã:</label>
+                <select id="ward">
+                    <option>--Chọn Phường, Xã--</option>
+                </select>
+
+                <label>Địa chỉ cụ thể:</label>
+                <input type="text" id="address" required>
+
+                <label>Dịch vụ vận chuyển:</label>
+                <select id="shipping">
+                    <option>GHN - Giao hàng nhanh</option>
+                </select>
+
+                <div class="total">
+                    <p><strong>Tổng tiền:</strong> 448,000 VNĐ</p>
+                    <p><strong>Phí ship:</strong> 0 VNĐ</p>
+                    <p class="grand-total"><strong>Thành tiền:</strong> 448,000 VNĐ</p>
+                </div>
+
+                <button type="submit" class="confirm-btn">Xác nhận</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("checkout-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            alert("Đơn hàng của bạn đã được xác nhận!");
+        });
+
+        // Fake dữ liệu tỉnh/thành phố
+        const cities = ["Hà Nội", "TP. Hồ Chí Minh", "Đà Nẵng", "Hải Phòng", "Cần Thơ"];
+        const citySelect = document.getElementById("city");
+
+        cities.forEach(city => {
+            let option = document.createElement("option");
+            option.textContent = city;
+            citySelect.appendChild(option);
+        });
+    </script>
+</body>
+</html>
