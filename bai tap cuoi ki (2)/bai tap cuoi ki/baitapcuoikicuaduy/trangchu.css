@@ -19,7 +19,7 @@ a {
 }
 
 header {
-    background-color: #FFE8B9;
+    background-color: #ffb9f0;
     text-align: center;
 }
 
@@ -405,8 +405,14 @@ li {
     opacity: 1;
 }
 .baner-one{
+    margin-top: 50px;
+}
+.baner-one img {
+    width: 100%;
+    display: block;
+    border-radius: 5px;
     margin-top: 30px;
-
+    margin-bottom: 20px;
 }
 .slider-product-one-content{
     background-color: #00febe;

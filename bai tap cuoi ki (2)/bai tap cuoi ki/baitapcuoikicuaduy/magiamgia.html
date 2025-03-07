@@ -41,9 +41,29 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: background 0.3s;
         }
         .coupon:hover {
             background: #fffae6;
+        }
+        .coupon img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .coupon-details {
+            display: flex;
+            align-items: center;
+        }
+        .coupon-details span {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+        }
+        .coupon-details p {
+            margin: 5px 0;
+            color: #666;
         }
         button {
             background: #ff6600;
@@ -52,9 +72,43 @@
             padding: 8px 15px;
             border-radius: 5px;
             cursor: pointer;
+            transition: background 0.3s;
         }
         button:hover {
             background: #e65c00;
+        }
+        .size-guide {
+            margin-top: 40px;
+            text-align: center;
+        }
+        .size-guide img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .testimonial {
+            background: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        .testimonial img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            float: left;
+            margin-right: 10px;
+        }
+        .testimonial p {
+            margin: 0;
+            color: #666;
+        }
+        .testimonial h4 {
+            margin: 0;
+            color: #333;
         }
     </style>
 </head>
@@ -65,9 +119,58 @@
             <input type="text" id="search" placeholder="Tìm mã giảm giá..." onkeyup="filterCoupons()">
         </div>
         <div id="coupon-list">
-            <div class="coupon" data-code="SALE50"><span>Giảm 50%</span> <button onclick="copyCode('SALE50')">Sao chép</button></div>
-            <div class="coupon" data-code="FREESHIP"><span>Miễn phí vận chuyển</span> <button onclick="copyCode('FREESHIP')">Sao chép</button></div>
-            <div class="coupon" data-code="DISCOUNT30"><span>Giảm 30K</span> <button onclick="copyCode('DISCOUNT30')">Sao chép</button></div>
+            <div class="coupon" data-code="SALE50">
+                <div class="coupon-details">
+                    <img src="magiamgia1.png" alt="Giảm 50%">
+                    <div>
+                        <span>Giảm 50%</span>
+                        <p>Áp dụng cho tất cả sản phẩm</p>
+                    </div>
+                </div>
+                <button onclick="copyCode('SALE50')">Sao chép</button>
+            </div>
+            <div class="coupon" data-code="FREESHIP">
+                <div class="coupon-details">
+                    <img src="magiamgia2.jpg" alt="Miễn phí vận chuyển">
+                    <div>
+                        <span>Miễn phí vận chuyển</span>
+                        <p>Cho đơn hàng từ 500K</p>
+                    </div>
+                </div>
+                <button onclick="copyCode('FREESHIP')">Sao chép</button>
+            </div>
+            <div class="coupon" data-code="DISCOUNT30">
+                <div class="coupon-details">
+                    <img src="magiamgia3.png" alt="Giảm 30K">
+                    <div>
+                        <span>Giảm 30K</span>
+                        <p>Cho đơn hàng từ 300K</p>
+                    </div>
+                </div>
+                <button onclick="copyCode('DISCOUNT30')">Sao chép</button>
+            </div>
+        </div>
+    </div>
+    <div class="size-guide">
+        <h2>Vòng quay may mắn nhận mã giảm giá</h2>
+        <img src="vongquaymayman.jpg" alt="Hướng dẫn chọn kích cỡ">
+    </div>
+    <div class="container">
+        <h2>Khách hàng nói gì về chúng tôi</h2>
+        <div class="testimonial">
+            <img src="nguoi1.png" alt="Khách hàng 1">
+            <h4>Nguyễn Văn A</h4>
+            <p>"Dịch vụ tuyệt vời, sản phẩm chất lượng. Tôi rất hài lòng!"</p>
+        </div>
+        <div class="testimonial">
+            <img src="nguoi2.png" alt="Khách hàng 2">
+            <h4>Trần Thị B</h4>
+            <p>"Giao hàng nhanh chóng, giá cả hợp lý. Sẽ tiếp tục ủng hộ."</p>
+        </div>
+        <div class="testimonial">
+            <img src="nguoi3.jpg" alt="Khách hàng 3">
+            <h4>Phạm Văn C</h4>
+            <p>"Mã giảm giá rất hữu ích, giúp tôi tiết kiệm được nhiều chi phí."</p>
         </div>
     </div>
     <script>

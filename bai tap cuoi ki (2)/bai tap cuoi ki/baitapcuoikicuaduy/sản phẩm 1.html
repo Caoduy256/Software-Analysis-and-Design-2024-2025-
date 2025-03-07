@@ -8,114 +8,227 @@
     <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <style>
         body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+        }
 
-header {
-    background-color: #fff;
-    border-bottom: 1px solid #eee;
-    padding: 10px 20px;
-}
+        header {
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+            padding: 10px 20px;
+        }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    gap: 15px;
-}
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 15px;
+        }
 
-nav ul li a {
-    text-decoration: none;
-    color: #333;
-}
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
 
-.search-bar {
-    float: right;
-}
+        nav ul li a:hover {
+            color: #ff6600;
+        }
 
-.product-detail {
-    display: flex;
-    padding: 20px;
-    gap: 20px;
-}
+        .search-bar {
+            float: right;
+        }
 
-.product-gallery {
-    flex: 1;
-}
+        .search-bar input {
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
 
-.main-image img {
-    width: 100%;
-    border: 1px solid #eee;
-}
+        .product-detail {
+            display: flex;
+            padding: 20px;
+            gap: 20px;
+            max-width: 1200px;
+            margin: auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
-.thumbnail-gallery {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
-}
+        .product-gallery {
+            flex: 1;
+        }
 
-.thumbnail-gallery img {
-    width: 60px;
-    cursor: pointer;
-    border: 1px solid #ccc;
-}
+        .main-image img {
+            width: 100%;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
 
-.product-info {
-    flex: 1;
-}
+        .main-image img:hover {
+            transform: scale(1.05);
+        }
 
-.product-info h1 {
-    margin-top: 0;
-}
+        .thumbnail-gallery {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
 
-.rating ion-icon {
-    color: #ff9900;
-}
+        .thumbnail-gallery img {
+            width: 60px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
 
-.price {
-    color: #d32f2f;
-    font-size: 1.5em;
-}
+        .thumbnail-gallery img:hover {
+            transform: scale(1.1);
+        }
 
-.discount {
-    background-color: #d32f2f;
-    color: white;
-    padding: 2px 4px;
-    border-radius: 3px;
-    font-size: 0.8em;
-}
+        .product-info {
+            flex: 1;
+        }
 
-.size-selection .size-btn {
-    padding: 5px 10px;
-    margin: 5px;
-    cursor: pointer;
-    border: 1px solid #ccc;
-}
+        .product-info h1 {
+            margin-top: 0;
+            color: #333;
+        }
 
-.quantity button {
-    padding: 5px 10px;
-    cursor: pointer;
-}
+        .rating ion-icon {
+            color: #ff9900;
+        }
 
-.quantity input {
-    width: 30px;
-    text-align: center;
-    border: none;
-}
+        .price {
+            color: #d32f2f;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
 
-.action-buttons button {
-    padding: 10px 15px;
-    margin: 5px;
-    cursor: pointer;
-    border: none;
-    color: white;
-    background-color: #000;
-    border-radius: 3px;
-}
+        .discount {
+            background-color: #d32f2f;
+            color: white;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-size: 0.8em;
+        }
 
+        .color-selection .color-options span {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 5px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border 0.3s;
+        }
+
+        .color-selection .color-options span.selected {
+            border: 2px solid #333;
+        }
+
+        .size-selection .size-btn {
+            padding: 5px 10px;
+            margin: 5px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .size-selection .size-btn:hover {
+            background: #f4f4f4;
+        }
+
+        .quantity button {
+            padding: 5px 10px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: #fff;
+            transition: background 0.3s;
+        }
+
+        .quantity button:hover {
+            background: #f4f4f4;
+        }
+
+        .quantity input {
+            width: 30px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 0 5px;
+        }
+
+        .action-buttons button {
+            padding: 10px 15px;
+            margin: 5px;
+            cursor: pointer;
+            border: none;
+            color: white;
+            background-color: #000;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .action-buttons button:hover {
+            background-color: #333;
+        }
+
+        .product-description {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .product-description h4 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .product-description p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .size-guide {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .size-guide h4 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .size-guide p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .size-guide table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .size-guide th, .size-guide td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .size-guide th {
+            background-color: #f8f8f8;
+        }
     </style>
 </head>
 <body>
@@ -137,13 +250,13 @@ nav ul li a {
     <main class="product-detail">
         <div class="product-gallery">
             <div class="main-image">
-                <img src="images/main.jpg" id="mainImage" alt="Sản phẩm">
+                <img src="áo sơ mi tencel4.jpg" id="mainImage" alt="Sản phẩm">
             </div>
             <div class="thumbnail-gallery">
-                <img src="images/img1.jpg" onclick="changeImage(this.src)">
-                <img src="images/img2.jpg" onclick="changeImage(this.src)">
-                <img src="images/img3.jpg" onclick="changeImage(this.src)">
-                <img src="images/img4.jpg" onclick="changeImage(this.src)">
+                <img src="áo sơ mi tencel.jpg" onclick="changeImage(this.src)">
+                <img src="áo sơ mi tencel1.jpg" onclick="changeImage(this.src)">
+                <img src="áo sơ mi tencel2.jpg" onclick="changeImage(this.src)">
+                <img src="áo sơ mi tencel3.jpg" onclick="changeImage(this.src)">
             </div>
         </div>
         <div class="product-info">
@@ -156,11 +269,11 @@ nav ul li a {
                 <ion-icon name="star-outline"></ion-icon>
                 <span>(0 đánh giá)</span>
             </div>
-            <p class="price">745.000đ <del>1.490.000đ</del> <span class="discount">-50%</span></p>
+            <p class="price">750.000đ <del>1.500.000đ</del> <span class="discount">-50%</span></p>
             <div class="color-selection">
                 <h4>Màu sắc: Be</h4>
                 <div class="color-options">
-                    <span class="color-be" onclick="selectColor(this)"></span>
+                    <span class="color-be" onclick="selectColor(this)" style="background-color: #f5f5dc;"></span>
                 </div>
             </div>
             <div class="size-selection">
@@ -178,33 +291,91 @@ nav ul li a {
                 <button onclick="changeQuantity(1)">+</button>
             </div>
             <div class="action-buttons">
-                <button class="add-to-cart"><a href="cuahangcuatoi.html">thêm vào giỏ</a></button>
+                <button class="add-to-cart"><a href="cuahangcuatoi.html" style="color: white; text-decoration: none;">Thêm vào giỏ</a></button>
                 <button class="buy-now">Mua hàng</button>
+            </div>
+            <div class="product-description">
+                <h4>Giới thiệu sản phẩm:</h4>
+                <p>Áo sơ mi Tencel Kose được làm từ chất liệu cao cấp, mang lại cảm giác thoải mái và thoáng mát cho người mặc. Thiết kế hiện đại, phù hợp cho nhiều dịp khác nhau.</p>
+                <h4>Đặc điểm nổi bật:</h4>
+                <p>- Chất liệu: Tencel 100%</p>
+                <p>- Màu sắc: Be</p>
+                <p>- Size: S, M, L, XL, XXL</p>
+                <p>- Phù hợp cho: Đi làm, đi chơi, dự tiệc</p>
+                <h4>Hướng dẫn bảo quản:</h4>
+                <p>- Giặt tay hoặc giặt máy ở chế độ nhẹ</p>
+                <p>- Không sử dụng chất tẩy mạnh</p>
+                <p>- Ủi ở nhiệt độ thấp</p>
+            </div>
+            <div class="size-guide">
+                <h4>Hướng dẫn chọn kích cỡ:</h4>
+                <p>Để chọn kích cỡ phù hợp, vui lòng tham khảo bảng kích cỡ dưới đây:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Kích cỡ</th>
+                            <th>Vòng ngực (cm)</th>
+                            <th>Vòng eo (cm)</th>
+                            <th>Vòng mông (cm)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>S</td>
+                            <td>84-88</td>
+                            <td>68-72</td>
+                            <td>90-94</td>
+                        </tr>
+                        <tr>
+                            <td>M</td>
+                            <td>88-92</td>
+                            <td>72-76</td>
+                            <td>94-98</td>
+                        </tr>
+                        <tr>
+                            <td>L</td>
+                            <td>92-96</td>
+                            <td>76-80</td>
+                            <td>98-102</td>
+                        </tr>
+                        <tr>
+                            <td>XL</td>
+                            <td>96-100</td>
+                            <td>80-84</td>
+                            <td>102-106</td>
+                        </tr>
+                        <tr>
+                            <td>XXL</td>
+                            <td>100-104</td>
+                            <td>84-88</td>
+                            <td>106-110</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </main>
 
     <script>
         // Đổi ảnh chính khi click vào ảnh thumbnail
-function changeImage(src) {
-    document.getElementById("mainImage").src = src;
-}
+        function changeImage(src) {
+            document.getElementById("mainImage").src = src;
+        }
 
-// Thay đổi màu sắc khi chọn
-function selectColor(element) {
-    const colorOptions = document.querySelectorAll('.color-options span');
-    colorOptions.forEach(option => option.classList.remove('selected'));
-    element.classList.add('selected');
-}
+        // Thay đổi màu sắc khi chọn
+        function selectColor(element) {
+            const colorOptions = document.querySelectorAll('.color-options span');
+            colorOptions.forEach(option => option.classList.remove('selected'));
+            element.classList.add('selected');
+        }
 
-// Tăng giảm số lượng sản phẩm
-function changeQuantity(change) {
-    let quantity = parseInt(document.getElementById("quantityInput").value);
-    quantity += change;
-    if (quantity < 1) quantity = 1;
-    document.getElementById("quantityInput").value = quantity;
-}
-
+        // Tăng giảm số lượng sản phẩm
+        function changeQuantity(change) {
+            let quantity = parseInt(document.getElementById("quantityInput").value);
+            quantity += change;
+            if (quantity < 1) quantity = 1;
+            document.getElementById("quantityInput").value = quantity;
+        }
     </script>
 </body>
 </html>

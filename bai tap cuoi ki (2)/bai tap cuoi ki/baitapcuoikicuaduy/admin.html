@@ -77,19 +77,25 @@
             text-align: center;
             padding: 10px;
         }
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
+        }
     </style>
 </head>
 <body>
     <div class="sidebar">
         <h2>Admin INRD</h2>
         <ul>
-            <li><i class="fa fa-home"></i> Trang chủ</li>
-            <li><i class="fa fa-list"></i> Danh mục</li>
-            <li><i class="fa fa-box"></i> Sản phẩm</li>
-            <li><i class="fa fa-images"></i> Slider</li>
-            <li><i class="fa fa-shopping-cart"></i> Đơn hàng</li>
-            <li><i class="fa fa-user"></i> Nhân viên</li>
-            <li><i class="fa fa-truck"></i> Đối tác vận chuyển</li>
+            <li data-section="home"><i class="fa fa-home"></i> Trang chủ</li>
+            <li data-section="category"><i class="fa fa-list"></i> Danh mục</li>
+            <li data-section="product"><i class="fa fa-box"></i> Sản phẩm</li>
+            <li data-section="slider"><i class="fa fa-images"></i> Slider</li>
+            <li data-section="order"><i class="fa fa-shopping-cart"></i> Đơn hàng</li>
+            <li data-section="staff"><i class="fa fa-user"></i> Nhân viên</li>
+            <li data-section="partner"><i class="fa fa-truck"></i> Đối tác vận chuyển</li>
         </ul>
     </div>
 
@@ -98,7 +104,7 @@
             <h1>Trang Chủ</h1>
             <a href="trangchu.html"><button style="padding: 10px; background: #007bff; color: white; border: none; cursor: pointer;">Đăng xuất</button></a>
         </div>
-        <div class="dashboard">
+        <div class="dashboard section active" id="home">
             <div class="card">
                 <i class="fa fa-shopping-cart"></i>
                 <h3>24 Đơn hàng</h3>
@@ -120,10 +126,50 @@
                 <p>Sản phẩm được bình luận</p>
             </div>
         </div>
+        <div class="section" id="category">
+            <h2>Danh mục</h2>
+            <p>Nội dung của trang Danh mục.</p>
+        </div>
+        <div class="section" id="product">
+            <h2>Sản phẩm</h2>
+            <p>Nội dung của trang Sản phẩm.</p>
+        </div>
+        <div class="section" id="slider">
+            <h2>Slider</h2>
+            <p>Nội dung của trang Slider.</p>
+        </div>
+        <div class="section" id="order">
+            <h2>Đơn hàng</h2>
+            <p>Nội dung của trang Đơn hàng.</p>
+        </div>
+        <div class="section" id="staff">
+            <h2>Nhân viên</h2>
+            <p>Nội dung của trang Nhân viên.</p>
+        </div>
+        <div class="section" id="partner">
+            <h2>Đối tác vận chuyển</h2>
+            <p>Nội dung của trang Đối tác vận chuyển.</p>
+        </div>
         <div class="footer">
             <p>&copy; 2025 LPTSHOP. All rights reserved.</p>
         </div>
     </div>
-    
+
+    <script>
+        const sidebarItems = document.querySelectorAll('.sidebar ul li');
+        const sections = document.querySelectorAll('.section');
+
+        sidebarItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const sectionId = item.getAttribute('data-section');
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                    if (section.id === sectionId) {
+                        section.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
